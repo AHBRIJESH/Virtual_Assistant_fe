@@ -124,22 +124,12 @@ export function Avatar(props) {
     audioElement: externalAudioElement = null,
     responseText = "",
   } = props;
-  const {
-    script: levaScript,
-    headFollow,
-    smoothMorphTarget,
-    morphTargetSmoothing,
-  } = useControls({
-    headFollow: true,
-    smoothMorphTarget: true,
-    morphTargetSmoothing: 0.5,
-    script: {
-      value: "output",
-    },
-  });
 
+  const headFollow= true;
+  const smoothMorphTarget= true;
+  const morphTargetSmoothing= 0.5;
   const playAudio = externalPlayAudio;
-  const script = externalScript || levaScript;
+  const script = externalScript;
   const [audio, setAudio] = useState(null);
   const [lipsync, setLipsync] = useState({ mouthCues: [] });
 
