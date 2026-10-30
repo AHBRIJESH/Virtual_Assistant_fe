@@ -1,0 +1,15 @@
+{
+  "metadata": {
+    "soundFile": "D:\\Git\\Sucide_Mitigation_Chatbot\\UI\\public\\audios\\1763296136137_temp.wav",
+    "duration": 1.43
+  },
+  "mouthCues": [
+    { "start": 0.00, "end": 0.08, "value": "X" },
+    { "start": 0.08, "end": 0.29, "value": "D" },
+    { "start": 0.29, "end": 0.43, "value": "B" },
+    { "start": 0.43, "end": 0.94, "value": "X" },
+    { "start": 0.94, "end": 1.14, "value": "C" },
+    { "start": 1.14, "end": 1.21, "value": "B" },
+    { "start": 1.21, "end": 1.43, "value": "X" }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "metadata": {
+    "soundFile": "D:\\Git\\Sucide_Mitigation_Chatbot\\UI\\public\\audios\\output_fixed.wav",
+    "duration": 1.20
+  },
+  "mouthCues": [
+    { "start": 0.00, "end": 0.11, "value": "X" },
+    { "start": 0.11, "end": 0.16, "value": "B" },
+    { "start": 0.16, "end": 0.20, "value": "C" },
+    { "start": 0.20, "end": 0.97, "value": "F" },
+    { "start": 0.97, "end": 1.20, "value": "X" }
+  ]
+}
