@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Html } from "@react-three/drei";
 import { io } from "socket.io-client";
 
-const ASSISTANT_PLAYBACK_RATE = 0.8;
+const ASSISTANT_PLAYBACK_RATE = 1;
 const ASSISTANT_PLAYBACK_VOLUME = 1;
 
 const createSilentAudioUrl = () => {
@@ -104,7 +104,9 @@ const VoiceAssistant = ({ onAvatarSpeak }) => {
       let audio = null;
       let audioUrl = "";
       if (hasAudio) {
-        const decodedAudio = Uint8Array.from(atob(audio_data), (character) => character.charCodeAt(0));
+        const decodedAudio = typeof audio_data === "string"
+          ? Uint8Array.from(atob(audio_data), (character) => character.charCodeAt(0))
+          : audio_data;
         audioUrl = URL.createObjectURL(new Blob([decodedAudio], { type: "audio/mpeg" }));
         activeAudioUrlRef.current = audioUrl;
         audio = audioRef.current || new Audio();
@@ -201,7 +203,7 @@ const VoiceAssistant = ({ onAvatarSpeak }) => {
 
     recognition.onstart = () => {
       setIsListening(true);
-      setStatus("Listening...");
+      if (!assistantSpeakingRef.current) setStatus("Listening...");
     };
 
     recognition.onresult = (event) => {
@@ -222,11 +224,11 @@ const VoiceAssistant = ({ onAvatarSpeak }) => {
 
           assistantSpeakingRef.current = true;
           setLastMessage({ speaker: "You", text: transcript });
-          setStatus("Sending to assistant...");
+          setStatus("Thinking...");
           stopListening();
           socketRef.current?.emit("voice_prompt", { message: transcript });
-        }, 450);
-      } else {
+        }, 250);
+      } else if (!assistantSpeakingRef.current) {
         setStatus("Listening...");
       }
     };
